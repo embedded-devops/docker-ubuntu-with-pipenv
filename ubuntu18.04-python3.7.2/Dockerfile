@@ -6,12 +6,6 @@ ENV DEBIAN_FRONTEND noninteractive
 # use bash shell as default
 SHELL ["/bin/bash", "-c"]
 
-# add the user theja, tribute to https://en.wikipedia.org/wiki/theja0473/ubuntu18.04-python3.7.2
-RUN useradd --create-home --no-log-init --system  theja && \
-	echo "theja	ALL = (ALL) NOPASSWD: ALL" >> /etc/sudoers
-USER theja
-WORKDIR /home/theja
-
 ENV TZ=asia/kolkata
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 # set some local environment variables
@@ -20,6 +14,13 @@ ENV LANG en_US.UTF-8
 # install python, pip and pipenv
 RUN apt-get update && \
     apt-get install -y sudo curl llvm git gcc make openssl wget net-tools libssl-dev libbz2-dev libreadline-dev libncurses5-dev libsqlite3-dev zlib1g-dev libffi-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev liblzma-dev
+
+
+# add the user theja, tribute to https://en.wikipedia.org/wiki/theja0473/ubuntu18.04-python3.7.2
+RUN useradd --create-home --no-log-init --system  theja && \
+	echo "theja	ALL = (ALL) NOPASSWD: ALL" >> /etc/sudoers
+USER theja
+WORKDIR /home/theja
 
 # install pyenv for motoko
 RUN curl https://pyenv.run | bash
