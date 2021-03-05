@@ -7,11 +7,11 @@ SHELL ["/bin/bash", "-c"]
 RUN apt-get update && \
     apt-get install -y sudo curl llvm git gcc make openssl libssl-dev libbz2-dev libreadline-dev libncurses5-dev libsqlite3-dev zlib1g-dev libffi-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev liblzma-dev
 
-# add the user Motoko, tribute to https://en.wikipedia.org/wiki/Motoko_Kusanagi
-RUN useradd --create-home --no-log-init --system  motoko && \
-	echo "motoko	ALL = (ALL) NOPASSWD: ALL" >> /etc/sudoers
-USER motoko
-WORKDIR /home/motoko
+# add the user theja, tribute to https://en.wikipedia.org/wiki/theja0473/ubuntu18.04-python3.7.2
+RUN useradd --create-home --no-log-init --system  theja && \
+	echo "theja	ALL = (ALL) NOPASSWD: ALL" >> /etc/sudoers
+USER theja
+WORKDIR /home/theja
 
 # set some local environment variables
 ENV LANG en_US.UTF-8
